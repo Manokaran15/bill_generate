@@ -26,35 +26,35 @@
                             <div class="row">
                                 <div class="col-6 my-2 pb-2">
                                     <label class="fw-bold" for="product_id">Product ID:</label>
-                                    <input type="text" name="product_id" id="product_id" class="form-control @error('product_id') is-invalid @enderror" placeholder="Product ID" value="{{ $edit_product['product_id'] }}">
+                                    <input type="text" name="product_id" id="product_id" class="form-control @error('product_id') is-invalid @enderror" placeholder="Product ID" value="{{ old('product_id') == '' ? $edit_product['product_id'] : old('product_id') }}">
                                     @error('product_id')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-6 my-2 pb-2">
                                     <label class="fw-bold" for="product_name">Product Name:</label>
-                                    <input type="text" name="product_name" id="product_name" class="form-control @error('product_name') is-invalid @enderror" placeholder="Product Name" value="{{ $edit_product['product_name'] }}">
+                                    <input type="text" name="product_name" id="product_name" class="form-control @error('product_name') is-invalid @enderror" placeholder="Product Name" value="{{ old('product_name') == '' ? $edit_product['product_name'] : old('product_name') }}">
                                     @error('product_name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-6 my-2 pb-2">
                                     <label class="fw-bold" for="available_stocks">Available Stocks:</label>
-                                    <input type="text" name="available_stocks" id="available_stocks" class="form-control @error('available_stocks') is-invalid @enderror" placeholder="Available Stocks" value="{{ $edit_product['available_stocks'] }}">
+                                    <input type="text" name="available_stocks" id="available_stocks" class="form-control @error('available_stocks') is-invalid @enderror" placeholder="Available Stocks" value="{{ old('available_stocks') == '' ? $edit_product['available_stocks'] : old('available_stocks') }}">
                                     @error('available_stocks')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-6 my-2 pb-2">
                                     <label class="fw-bold" for="product_price">Price:</label>
-                                    <input type="text" name="product_price" id="product_price" class="form-control @error('product_price') is-invalid @enderror" placeholder="Price" value="{{ $edit_product['product_price'] }}">
+                                    <input type="text" name="product_price" id="product_price" class="form-control @error('product_price') is-invalid @enderror" placeholder="Price" value="{{ old('product_price') == '' ? $edit_product['product_price'] : old('product_price') }}">
                                     @error('product_price')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-6 my-2 pb-2">
                                     <label class="fw-bold" for="tax_percentage">Tax Percentage:</label>
-                                    <input type="text" name="tax_percentage" id="tax_percentage" class="form-control @error('tax_percentage') is-invalid @enderror" placeholder="Tax Percentage" value="{{ $edit_product['tax_percentage'] }}">
+                                    <input type="text" name="tax_percentage" id="tax_percentage" class="form-control @error('tax_percentage') is-invalid @enderror" placeholder="Tax Percentage" value="{{ old('tax_percentage') == '' ? $edit_product['tax_percentage'] : old('tax_percentage') }}">
                                     @error('tax_percentage')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror

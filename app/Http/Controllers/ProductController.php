@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\BillRequest;
+use App\Http\Requests\UpdateBillRequest;
 use DB;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -17,7 +20,7 @@ class ProductController extends Controller
     {
         try {
             $results = Product::get()->toArray();
-
+            // Session::put('contact_form', true);
             return view('product/product_list', compact('results'));
         } catch (\Throwable $th) {
             return response()->json([
@@ -43,15 +46,8 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BillRequest $request)
     {
-        $validatedData = $request->validate([
-            'product_id'        => 'required|unique:products',
-            'product_name'      => "required|regex:/^[a-zA-Z]+$/u|max:255",
-            'available_stocks'  => "required",
-            'product_price'     => "required",
-            'tax_percentage'    => "required",
-        ]);
 
         $product_id         = $request->product_id;
         $product_name       = $request->product_name;
@@ -100,16 +96,8 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product, $id)
+    public function update(UpdateBillRequest $request, Product $product, $id)
     {
-        $validatedData = $request->validate([
-            'product_id'        => 'required|unique:products,product_id,'. $id,
-            'product_name'      => "required|regex:/^[a-zA-Z]+$/u|max:255",
-            'available_stocks'  => "required",
-            'product_price'     => "required",
-            'tax_percentage'    => "required",
-        ]);
-
         $product_id         = $request->product_id;
         $product_name       = $request->product_name;
         $available_stocks   = $request->available_stocks;
